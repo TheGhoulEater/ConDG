@@ -1,0 +1,42 @@
+name: Contineo Data Generator
+
+on:
+  workflow_dispatch:
+
+env:
+  CSV_FILE: "CS_USN.csv"
+  DAY_START: 1
+  DAY_END: 31
+  MONTH_START: 1
+  MONTH_END: 12
+  YEAR_START: 2004
+  YEAR_END: 2004
+  DATA_PATH: "ConData"
+  CONTINEO_API_URL: ${{ secrets.CONTINEO_API_URL }}
+  CONTINEO_API_AUTH: ${{ secrets.CONTINEO_API_AUTH }}
+
+jobs:
+  runner:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: "https://github.com/TheGhoulEater/ContineoDataGen"
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run ConGen Script
+        timeout-minutes: 340
+        continue-on-error: true
+        run: python3 -m ConGen
+
+      - name: Commit Changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          commit: --signoff
+          author_name: PrajjuSRobot
+          author_email: prajjusrobot@gmail.com
+          message: 'ConGen: Update data [BOT]'
