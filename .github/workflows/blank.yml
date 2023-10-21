@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: "https://github.com/TheGhoulEater/ContineoDataGen"
+          repository: "TheGhoulEater/ContineoDataGen"
           token: ${{ secrets.GH_TOKEN }}
 
       - name: Install Dependencies
