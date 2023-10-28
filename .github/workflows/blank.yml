@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  CSV_FILE: "IM_USN.csv"
+  CSV_FILE: "IS_USN.csv"
   DAY_START: 1
   DAY_END: 31
   MONTH_START: 1
