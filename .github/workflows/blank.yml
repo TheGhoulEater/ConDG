@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
 
 env:
-  CSV_FILE: "ME_USN.csv"
+  CSV_FILE: "FAILED_USN.csv"
   DAY_START: 1
   DAY_END: 31
   MONTH_START: 1
   MONTH_END: 12
-  YEAR_START: 2004
-  YEAR_END: 2004
+  YEAR_START: 2005
+  YEAR_END: 2005
   DATA_PATH: "ConData"
   CONTINEO_API_URL: ${{ secrets.CONTINEO_API_URL }}
   CONTINEO_API_AUTH: ${{ secrets.CONTINEO_API_AUTH }}
